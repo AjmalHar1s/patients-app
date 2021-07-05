@@ -1,0 +1,42 @@
+{%extends 'index_admin.html'%}
+{%block body%}
+
+<p>&nbsp;
+<form id="form2" name="form2" method="post" action="/doctoriew_details">
+  <div align="center">
+
+</form>
+</p>
+<form id="form1" name="form1" method="post" action="/doctor_registration">
+  <div align="center">
+    <p>&nbsp;</p>
+    <table width="218" border="1">
+      <tr>
+        <td width="96">Doctor name </td>
+        <td width="53">Contact</td>
+        <td width="8">Email</td>
+        <td width="5">Department</td>
+        <td width="8">Qualification</td>
+        <td width="8">Manage</td>
+      </tr>
+      {% for i in res %}
+      <tr>
+        <td>{{i[4]}}</td>
+        <td>{{i[7]}}</td>
+        <td>{{i[5]}}</td>
+        <td>{{i[10]}}</td>
+        <td>{{i[6]}}</td>
+        <td><p><a href="{{url_for('approve_d', id=i[1])}}">Approve</a></p>
+        <p><a href="{{url_for('reject_d', id=i[1])}}">Reject</a></p></td>
+      </tr>
+      {% endfor %}
+    </table>
+    <p>
+      <label>
+      <input type="submit" name="Submit" value="ADD" />
+      </label>
+    </p>
+  </div>
+</form>
+</body>
+{%endblock%}

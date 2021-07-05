@@ -1,0 +1,46 @@
+{%extends 'index_pharmacy.html'%}
+{%block body%}
+<body>
+<form id="form1" name="form1" method="post" action="/medicine_reg_code">
+  <div align="center">
+    <table width="200" border="1">
+      <tr>
+        <td>Medicine</td>
+        <td><label>
+          <input type="text" name="textfield" required pattern="[A-Z a-z.]{3,25}" />
+        </label></td>
+      </tr>
+      <tr>
+        <td>Brand</td>
+        <td><label>
+          <input type="text" name="textfield2" pattern="[A-Z a-z.]{3,25}" />
+        </label></td>
+      </tr>
+      <tr>
+        <td>Manufacture Date </td>
+        <td><label>
+          <input type="date" name="textfield3" required />
+        </label></td>
+      </tr>
+      <tr>
+        <td> Expiry Date </td>
+        <td><label>
+          <input type="date" name="textfield4" required />
+        </label></td>
+      </tr>
+      <tr>
+        <td>Quantity</td>
+        <td><label>
+          <input type="text" name="textfield5" pattern="{0,25}" />
+        </label></td>
+      </tr>
+      </table>
+    <p>
+      <label>
+      <input type="submit" name="Submit" value="Register" />
+      </label>
+    </p>
+  </div>
+</form>
+</body>
+{%endblock%}

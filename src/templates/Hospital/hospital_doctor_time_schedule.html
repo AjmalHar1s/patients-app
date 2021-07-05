@@ -1,0 +1,45 @@
+{%extends 'index_hospital.html'%}
+{%block body%}
+
+<body>
+<form id="form1" name="form1" method="post" action="/doctor_department_sort">
+  <label>
+  <div align="center">Department
+    <select name="select">
+<!--check-->
+      {% for i in val %}
+      <option value="{{i[0]}}" {% if depid == i[0] %} selected {% endif %} >{{i[1]}}</option>
+      {% endfor %}
+
+    </select>
+    <input type="submit" name="Submit" value="Search" />
+    <br />
+    <table width="200" border="1">
+        <tr>
+            <td colspan="4" align="center">{{depid[0]}}</td>
+        </tr>
+      <tr>
+        <td>Doctor Name</td>
+        <td>Day</td>
+        <td>From time </td>
+        <td>To time </td>
+      </tr>
+
+
+       {% for j in val1 %}
+
+
+      <tr>
+        <td>{{j[0]}}</td>
+        <td>{{j[5]}}</td>
+        <td>{{j[3]}}</td>
+        <td>{{j[4]}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  </label>
+</form>
+<p>&nbsp;</p>
+</body>
+{%endblock%}

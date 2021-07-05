@@ -1,0 +1,24 @@
+{%extends 'index_pharmacy.html'%}
+{%block body%}
+<body>
+<div align="center">
+  <table width="200" border="1">
+    <tr>
+      <td><p>Patient Name </p>
+      </td>
+      <td>Medicine name </td>
+      <td>Consumption amount</td>
+      <td>Consumption days</td>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td>{{i[0]}} {{i[1]}}</td>
+      <td>{{i[2]}}</td>
+      <td>{{i[3]}}</td>
+      <td>{{i[4]}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+</body>
+{%endblock%}

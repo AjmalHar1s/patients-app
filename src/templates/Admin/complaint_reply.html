@@ -1,0 +1,30 @@
+{%extends 'index_admin.html'%}
+{%block body%}
+
+
+<body>
+<form id="form1" name="form1" method="post" action="send_complaint_reply">
+  <div align="center">
+    <table width="200" border="1">
+      <tr>
+        <td><div align="center">Complaint reply </div></td>
+      </tr>
+      <tr>
+        <td><label>
+          <div align="center">
+            <textarea name="textarea"></textarea>
+            </div>
+        </label></td>
+      </tr>
+      <tr>
+        <td><label>
+          <div align="center">
+            <input type="submit" name="Submit" value="SEND" />
+            </div>
+        </label></td>
+      </tr>
+      </table>
+  </div>
+</form>
+</body>
+{%endblock%}

@@ -1,0 +1,26 @@
+{%extends 'index_admin.html'%}
+{%block body%}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <div align="center">
+    <table width="200" border="1">
+      <tr>
+        <td>Patient name </td>
+        <td>complaint</td>
+        <td>date</td>
+        <td>reply</td>
+      </tr>
+      {% for i in val %}
+      <tr>
+        <td>{{i[0]}}</td>
+        <td>{{i[4]}}</td>
+        <td>{{i[5]}}</td>
+        <td><div align="center"><a href="{{url_for('complaint_reply', id = i[2])}}">reply</a></div></td>
+      </tr>
+      {% endfor %}
+      </table>
+  </div>
+</form>
+</body>
+{%endblock%}

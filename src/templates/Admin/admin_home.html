@@ -1,0 +1,65 @@
+{%extends 'index_admin.html'%}
+{%block body%}
+<head>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    .admin-layout {
+      align-items: center;
+    }
+    .hospital-contents {
+      font-family: 'Poppins', sans-serif;
+      margin: 0 auto;
+      align-items: center;
+      font-size: 30px;
+      /*text-align: center;*/
+    }
+    table {
+      /*border: 1px solid red;*/
+      /*text-align: center;*/
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+      padding: 40px 30px;
+      width: 80%;
+      padding: 40px 30px;
+      color: #0c4128;
+
+    }
+    table tr {
+      padding: 40px;
+    }
+
+    tbody {
+      /*padding: 20px;*/
+      border-width: 20px;
+      border-color: #fff;
+    }
+    tbody td:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+  <table class="hospital-contents">
+    <tr>
+      <td><a href="/hospital_details">Register and Manage hospitals</a></td>
+    </tr>
+    <tr>
+      <td><a href="/pharmacy_details">Pharmacy Management</a></td>
+    </tr>
+    <tr>
+      <td><a href="/doctor_details">Doctor Management</a></td>
+    </tr>
+    <tr>
+      <td><a href="/feedback">Feedback</a></td>
+    </tr>
+    <tr>
+      <td><a href="/complaints">Complaint</a></td>
+    </tr>
+  </table>
+</div>
+</body>
+{%endblock%}

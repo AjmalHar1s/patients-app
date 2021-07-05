@@ -1,0 +1,62 @@
+{%extends 'index_admin.html'%}
+{%block body%}
+
+<body>
+<form id="form1" name="form1" method="post" action="hospital_reg_code">
+<div align="center">
+  <table width="500" border="0" cellpadding="10">
+    <tr>
+      <th><p align="left">hospital</p>    </th>
+      <td><label>
+        <input type="text" name="textfield" required pattern="[A-Z a-z.]{3,25}" />
+      </label></td>
+    </tr>
+    <tr>
+      <th><div align="left">place</div></th>
+      <td><label>
+        <input type="text" name="textfield2" pattern="[A-Z a-z.]{3,25}" />
+      </label></td>
+    </tr>
+    <tr>
+      <th><div align="left">phone number </div></th>
+      <td><label>
+        <input type="text" name="textfield3" required pattern="[6789][0-9]{9}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <th><div align="left">email ID </div></th>
+      <td><label>
+        <input type="text" name="textfield4" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" />
+      </label></td>
+    </tr>
+    <tr>
+      <th><div align="left">zip code </div></th>
+      <td><label>
+        <input type="text" name="textfield5" pattern="[0-9]{6}" />
+      </label></td>
+    </tr>
+    <tr>
+      <th><div align="left">user name </div></th>
+      <td><label>
+        <input type="text" name="textfield6" required pattern="[A-Z a-z.]{3,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <th><div align="left">password</div></th>
+      <td><label>
+        <input type="password" name="textfield7" required pattern="[A-Z a-z.]{3,25}" />
+      </label></td>
+    </tr>
+  </table>
+  <p>
+    <label>
+    <input type="submit" name="Submit" value="Register" />
+    </label>
+  </p>
+</div>
+</form>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+{%endblock%}
+

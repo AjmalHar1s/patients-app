@@ -1,0 +1,35 @@
+{%extends 'index_pharmacy.html'%}
+{%block body%}
+
+<body>
+<div align="center">
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <td>Medicine Name </td>
+      <td>Brand  </td>
+      <td>Quantity</td>
+      <td>Manage</td>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td>{{i[2]}}</td>
+      <td>{{i[3]}}</td>
+      <td>{{i[6]}}</td>
+      <td><p><a href="{{url_for('edit_medicine_details', id=i[0])}}">EDIT</a></p>
+      <p><a href="{{url_for('delete_medicine_details', id=i[0])}}">DELETE</a></p></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+  <form id="form2" name="form2" method="post" action="/medicine_registration">
+  <p>
+    <label>
+    <input type="submit" name="Submit" value="ADD" />
+    </label>
+  </p>
+  </form>
+
+</div>
+</body>
+{%endblock%}

@@ -1,0 +1,102 @@
+{%extends 'index_admin.html'%}
+{%block body%}
+
+<body>
+<form id="form1" name="form1" method="post" action="pharmacy_reg_code">
+  <div align="center">
+    <table width="200" border="1">
+      <tr>
+        <td>Pharmacy name </td>
+        <td><label>
+          <input type="text" name="textfield" required pattern="[A-Z a-z.]{3,25}" />
+        </label></td>
+      </tr>
+      <tr>
+        <td>place</td>
+        <td><label>
+          <input type="text" name="textfield2"  />
+        </label></td>
+      </tr>
+      <tr>
+        <td>Phone number </td>
+        <td><label>
+          <input type="text" name="textfield3" required pattern="[6789][0-9]{9}"/>
+        </label></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><label>
+          <input type="text" name="textfield4" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" />
+        </label></td>
+      </tr>
+      <tr>
+        <td>Zip code </td>
+        <td><label>
+          <input type="text" name="textfield5" pattern="[0-9]{6}"/>
+        </label></td>
+      </tr>
+      <tr>
+        <td>Username</td>
+        <td><label>
+          <input type="text" name="textfield6" required pattern="[A-Z a-z.]{3,25}"/>
+        </label></td>
+      </tr>
+      <tr>
+        <td height="23">Password</td>
+        <td><label>
+          <input type="password" name="textfield7" required pattern="[A-Z a-z.]{3,25}" />
+        </label></td>
+      </tr>
+      <tr>
+        <td height="23">Choose (from hosp. or not)</td>
+        <td><label>
+          <select name="select1" id="select1">
+            <option>YES</option>
+            <option>NO</option>
+          </select>
+        </label></td>
+      </tr>
+      <tr>
+        <td height="23" >Hospital</td>
+        <td><div align="center"></div>
+          <label>
+          <select name="select2" id="res">
+            {% for i in val %}
+            <option value="{{i[1]}}">{{i[2]}}</option>
+            {% endfor %}
+          </select>
+        </label></td>
+      </tr>
+      </table>  
+    <p>
+      <label>
+      <input type="submit" name="Submit" value="register" />
+      </label>
+    </p>
+  </div>
+</form>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+
+$(document).ready(function()
+{
+    $('#res').prop('disabled',true);
+    $("select#select1").change(function()
+    {
+
+        if ($(this).val() == 'YES')
+        {
+    alert("ok")
+          var br = $('#select1 option:selected').text();
+          $('#res').prop('disabled',false);
+        }
+        else
+        {
+          $('#res').prop('disabled',true);
+        }
+    });
+});
+</script>
+{%endblock%}

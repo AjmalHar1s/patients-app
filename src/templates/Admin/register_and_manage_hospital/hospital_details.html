@@ -1,0 +1,96 @@
+{%extends 'index_admin.html'%}
+{%block body%}
+
+<head>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    .admin-layout {
+      align-items: center;
+    }
+    .hospital-contents {
+      font-family: 'Poppins', sans-serif;
+      margin: 0 auto;
+      align-items: center;
+      font-size: 30px;
+      /*text-align: center;*/
+    }
+    table {
+      /*border: 1px solid red;*/
+      /*text-align: center;*/
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+      padding: 40px 30px;
+      width: 80%;
+      padding: 40px 30px;
+      color: #0c4128;
+
+    }
+    table tr {
+      padding: 40px;
+      border-width: 5px;
+    }
+    table td {
+      border-width: 5px;
+      text-align: center;
+    }
+
+    tbody {
+      /*padding: 20px;*/
+      border-width: 5px;
+
+      /*border-color: #fff;*/
+    }
+    .table-head {
+      font-weight: bold;
+      /*padding-bottom: 10px;*/
+      text-align: center;
+      padding: 10px 0;
+    }
+    .button {
+      /*padding: 10px;*/
+      background: #1c84e3;
+      border: 0;
+      padding: 10px 30px;
+      color: #fff;
+      transition: 0.4s;
+      border-radius: 3px;
+      margin: 20px 5px;
+    }
+    .button:hover {
+      background: #1977cc;
+    }
+    /*tbody td:hover {*/
+    /*  color: red;*/
+    /*}*/
+  </style>
+</head>
+
+<body>
+  <form id="form1" name="form1" method="post" action="\hospital_registration">
+<div align="center">
+  <table class="hospital-contents" border="1">
+    <tr class="table-head">
+      <td>Hospital Name</td>
+      <td>Address</td>
+      <td>Manage</td>
+    </tr>
+    {% for i in res %}
+    <tr>
+      <td>&nbsp;{{i[2]}}</td>
+      <td>{{i[3]}}</td>
+      <td><p><a href="{{url_for('edit_hospital', id=i[0])}}">edit</a></p>
+      <p><a href="{{url_for('delete_hospital_details', id=i[1])}}">delete</a></p></td>
+    </tr>
+    {% endfor %}
+  </table>
+    <label>
+      <input type="submit" name="Submit" value="Add" class="button"/>
+    </label>
+  </div>
+  </form>
+
+</body>
+{%endblock%}

@@ -1,0 +1,26 @@
+{%extends 'index_hospital.html'%}
+{%block body%}
+
+<body>
+<div align="center">
+  <table width="200" border="1">
+    <tr>
+      <td>Patient Name </td>
+      <td>Doctor Name </td>
+      <td>Date</td>
+      <td>Amount</td>
+      <td>Status</td>
+    </tr>
+    {%for i in val%}
+    <tr>
+      <td>{{i[0]}} {{i[0]}}</td>
+      <td>{{i[1]}}</td>
+      <td>{{i[2]}}</td>
+      <td>{{i[3]}}</td>
+      <td>{{i[4]}}</td>
+    </tr>
+    {%endfor%}
+  </table>
+</div>
+</body>
+{%endblock%}
