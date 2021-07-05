@@ -1,36 +1,99 @@
 {%extends 'index_admin.html'%}
 {%block body%}
 
+<head>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    .admin-layout {
+      align-items: center;
+    }
+    .hospital-contents {
+      font-family: 'Poppins', sans-serif;
+      margin: 0 auto;
+      align-items: center;
+      font-size: 25px;
+      /*text-align: center;*/
+    }
+    table {
+      /*border: 1px solid red;*/
+      /*text-align: center;*/
+      /*border-radius: 10px;*/
+      background: #fff;
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+      width: 50%;
+      /*padding: 40px 10px;*/
+      color: #0c4128;
+
+
+    }
+    table tr {
+      /*padding: 40px;*/
+      border-width: 5px;
+    }
+    table td {
+      border-width: 5px;
+      text-align: left;
+      padding: 10px;
+    }
+
+    tbody {
+      /*padding: 20px;*/
+      border-width: 5px;
+
+      /*border-color: #fff;*/
+    }
+
+    .button {
+      /*padding: 10px;*/
+      background: #1c84e3;
+      border: 0;
+      padding: 10px 30px;
+      color: #fff;
+      transition: 0.4s;
+      border-radius: 3px;
+      margin: 20px 5px;
+    }
+    .button:hover {
+      background: #bad9e7;
+      color: #0a53be;
+      border: 1px solid #0a53be;
+      transition: 0.7s;
+    }
+  </style>
+</head>
+
 <body>
 <form id="form1" name="form1" method="post" action="pharmacy_reg_code">
   <div align="center">
-    <table width="200" border="1">
+    <table class="hospital-contents" border="1">
       <tr>
-        <td>Pharmacy name </td>
+        <td>Pharmacy Name</td>
         <td><label>
           <input type="text" name="textfield" required pattern="[A-Z a-z.]{3,25}" />
         </label></td>
       </tr>
       <tr>
-        <td>place</td>
+        <td>Place</td>
         <td><label>
           <input type="text" name="textfield2"  />
         </label></td>
       </tr>
       <tr>
-        <td>Phone number </td>
+        <td>Phone Number</td>
         <td><label>
           <input type="text" name="textfield3" required pattern="[6789][0-9]{9}"/>
         </label></td>
       </tr>
       <tr>
-        <td>Email</td>
+        <td>Email ID</td>
         <td><label>
           <input type="text" name="textfield4" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" />
         </label></td>
       </tr>
       <tr>
-        <td>Zip code </td>
+        <td>Zip Code</td>
         <td><label>
           <input type="text" name="textfield5" pattern="[0-9]{6}"/>
         </label></td>
@@ -48,7 +111,7 @@
         </label></td>
       </tr>
       <tr>
-        <td height="23">Choose (from hosp. or not)</td>
+        <td height="23">Choose (from hospital or not)</td>
         <td><label>
           <select name="select1" id="select1">
             <option>YES</option>
@@ -70,7 +133,7 @@
       </table>  
     <p>
       <label>
-      <input type="submit" name="Submit" value="register" />
+      <input type="submit" name="Submit" value="Register" class="button" />
       </label>
     </p>
   </div>
@@ -88,7 +151,7 @@ $(document).ready(function()
 
         if ($(this).val() == 'YES')
         {
-    alert("ok")
+    alert("You have selected hospital pharmacy, press OK to continue!")
           var br = $('#select1 option:selected').text();
           $('#res').prop('disabled',false);
         }
