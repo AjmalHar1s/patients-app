@@ -1,4 +1,4 @@
-{%extends 'index_hospital.html'%}
+{%extends 'index_admin.html'%}
 {%block body%}
 
 <head>
@@ -82,29 +82,29 @@
     }
   </style>
 </head>
-<!--<div align="center">-->
-<!--<p>&nbsp;-->
-<!--<p id="form2" name="form2" method="post" action="/doctoriew_details">-->
-<!--  -->
-<!--  <p>-->
-<!--  <label>Type-->
-<!--      <select name="select">-->
-<!--        <option>Private</option>-->
-<!--        <option>Hospital</option>-->
-<!--      </select>-->
-<!--      </label>-->
+<div align="center">
+<p>&nbsp;
+<form id="form2" name="form2" method="post" action="/admin_view_doctors">
+<p class="top-desc">Doctors List</p>
+  <p>
+  <label>Type
+      <select name="select">
+        <option>Private</option>
+        <option>Hospital</option>
+      </select>
+      </label>
 
-<!--  <label>-->
-<!--      <input type="submit" name="Submit2" value="Search" class="button" />-->
-<!--      </label>-->
-<!--  </p>-->
-<!--  </div>-->
+  <label>
+      <input type="submit" name="Submit2" value="Search" class="button" />
+      </label>
+  </p>
+  </div>
 </form>
 </p>
 <div align="center">
-<form id="form1" name="form1" method="post" action="/doctor_registration">
 
-    <p class="top-desc">Hospital Doctor List</p>
+
+
     <table class="hospital-contents" border="1">
       <tr>
         <th>Doctor Name</th>
@@ -112,25 +112,24 @@
         <th>Email ID</th>
         <th>Department</th>
         <th>Qualification</th>
-        <th>Manage</th>
       </tr>
-      {% for i in res %}
+      {% for i in val %}
       <tr>
         <td>{{i[4]}}</td>
         <td>{{i[7]}}</td>
         <td>{{i[5]}}</td>
         <td>{{i[10]}}</td>
         <td>{{i[6]}}</td>
-        <td><p><a href="{{url_for('edit_doctor', id=i[1])}}">Edit</a></p>
-        <p><a href="{{url_for('delete_doctor_details', id=i[1])}}">Delete</a></p></td>
+<!--        <td><p><a href="{{url_for('edit_doctor', id=i[0])}}">Edit</a></p>-->
+<!--        <p><a href={{url_for('delete_doctor_details', id=i[1])}}">Delete</a></p></td>-->
       </tr>
       {% endfor %}
     </table>
-    <p>
-      <label>
-      <input type="submit" name="Submit" value="ADD" class="button" />
-      </label>
-    </p>
+<!--    <p>-->
+<!--      <label>-->
+<!--      <input type="submit" name="Submit" value="ADD" class="button" />-->
+<!--      </label>-->
+<!--    </p>-->
   </div>
 </form>
 </body>

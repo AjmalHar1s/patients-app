@@ -114,9 +114,10 @@ def submit_edit_doctor():
     return redirect('doctor_details')
 
 #for deleting docotor details along with login details
-@app.route("/delete_doctor_details", methods=['get', 'pos'])
+@app.route("/delete_doctor_details", methods=['get', 'post'])
 def delete_doctor_details():
     did = request.args.get('id')
+    print(did)
     cmd.execute("delete from doctor where login_id = '"+str(did)+"'")
     cmd.execute("DELETE FROM `login` WHERE `logid_id`='"+str(did)+"'")
     con.commit()
@@ -157,7 +158,9 @@ def feedback():
 #Complaints
 @app.route ('/complaints')
 def complaints():
-    cmd.execute("SELECT patient.first_name, patient.last_name, complaint.* FROM patient JOIN complaint ON complaint.patient_id=patient.login_id and complaint.reply='NA' ")
+    con = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='docondoor')
+    cmd = con.cursor()
+    cmd.execute("SELECT patient.first_name, patient.last_name, complaint.* FROM patient JOIN complaint ON complaint.patient_id=patient.login_id and complaint.reply='pending' ")
     s=cmd.fetchall()
     return render_template('Admin/view_complaints.html',val=s)
 
@@ -233,17 +236,35 @@ def hospital_doc_time_schedule():
 
 @app.route('/doctor_department_sort',methods=['post'])
 def doctor_department_sort():
-    cmd.execute("select * from department")
-    f = cmd.fetchall()
-    dptid = request.form['select']
-    print(dptid)
-    cmd.execute("select doctor_department from department where department_id='"+str(dptid)+"'")
-    d=cmd.fetchone()
-    cmd.execute("SELECT doctor.doctor_name,department_id,time_schedule.* FROM doctor JOIN time_schedule ON doctor.login_id = time_schedule.doctor_lid AND doctor.department_id='"+dptid+"'")
-    s=cmd.fetchall()
-    print(s)
-    return render_template('Hospital/hospital_doctor_time_schedule.html',val1 = s,val = f,depid=d)
+    btn=request.form['Submit']
+    if btn=='Search':
+        cmd.execute("select * from department")
+        f = cmd.fetchall()
+        dptid = request.form['select']
+        print(dptid)
+        cmd.execute("select doctor_department from department where department_id='"+str(dptid)+"'")
+        d=cmd.fetchone()
+        cmd.execute("SELECT doctor.doctor_name,department_id,time_schedule.* FROM doctor JOIN time_schedule ON doctor.login_id = time_schedule.doctor_lid AND doctor.department_id='"+dptid+"'")
+        s=cmd.fetchall()
+        print(s)
+        return render_template('Hospital/hospital_doctor_time_schedule.html',val1 = s,val = f,depid=d)
+    else:
+        dptid = request.form['select']
 
+        cmd.execute("SELECT * FROM `doctor` WHERE `doctor`.`department_id` IN(SELECT `department_id` FROM `department` WHERE `department_id`="+dptid+")")
+        s=cmd.fetchall()
+        print(s)
+        return render_template("Hospital/add_doctor_time.html",val=s)
+
+@app.route ('/addshedule', methods=['post'])
+def addshedule():
+    did=request.form['did']
+    day=request.form['day']
+    f_time=request.form['ftime']
+    t_time=request.form['ttime']
+    cmd.execute("insert into time_schedule values(null,'" + did + "', '" + f_time + "', '" + t_time + "', '" + day + "' ) ")
+    con.commit()
+    return '''<script>alert('okkk');window.location='/hospital_doctor_time_schedule'</script>'''
 
 
 #inserting values into doctor table
@@ -493,13 +514,35 @@ def submit_edit_pharmacy():
     return redirect('pharmacy_details')
 
 #for deleting pharmacy details along with login details
-@app.route("/delete_pharmacy_details", methods=['get', 'pos'])
+@app.route("/delete_pharmacy_details", methods=['get', 'post'])
 def delete_pharmacy_details():
     pid = request.args.get('id')
     cmd.execute("delete from pharmacy where login_id = '"+str(pid)+"'")
     cmd.execute("DELETE FROM `login` WHERE `logid_id`='"+str(pid)+"'")
     con.commit()
     return redirect('pharmacy_details')
+@app.route("/admin_view_doctors1", methods=['get', 'post'])
+def admin_view_doctors1():
+    return render_template("admin/doctor_management/all_doctor_details.html")
+@app.route("/admin_view_doctors", methods=['get', 'post'])
+def admin_view_doctors():
+    type = request.form['select']
+    if type == "Private":
+        # cmd.execute("SELECT `doctor`.*,`department`.`doctor_department` FROM `department` JOIN `doctor` ON `doctor`.`department_id`=`department`.`department_id` is NULL")
+
+        # cmd.execute("select * from doctor where `hospital_id` is NULL")
+        cmd.execute(
+            "SELECT doctor.*, department.doctor_department FROM doctor JOIN department ON doctor.department_id = department.department_id WHERE hospital_id is NULL")
+        s = cmd.fetchall()
+        return render_template("admin/doctor_management/all_doctor_details.html",val=s)
+    elif type == "Hospital":
+        cmd.execute(
+            "SELECT doctor.*, department.doctor_department FROM doctor JOIN department ON doctor.department_id = department.department_id WHERE hospital_id is NOT NULL")
+        s = cmd.fetchall()
+        print(s)
+        return render_template("admin/doctor_management/all_doctor_details.html",val=s)
+
+
 
 
 
