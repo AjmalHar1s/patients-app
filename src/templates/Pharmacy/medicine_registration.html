@@ -1,9 +1,60 @@
 {%extends 'index_pharmacy.html'%}
 {%block body%}
+
+<head>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    .admin-layout {
+      align-items: center;
+    }
+    .hospital-contents {
+      font-family: 'Poppins', sans-serif;
+      margin: 0 auto;
+      align-items: center;
+      font-size: 20px;
+      /*text-align: center;*/
+    }
+    table {
+      /*border: 1px solid red;*/
+      /*text-align: center;*/
+      /*border-radius: 10px;*/
+      background: #fff;
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+      width: 50%;
+      /*padding: 40px 10px;*/
+      color: #0c4128;
+    }
+    .table-head {
+      font-weight: bold;
+      font-size: 25px;
+    }
+    table tr {
+      /*padding: 40px;*/
+      border-width: 5px;
+    }
+    table td {
+      border-width: 5px;
+      text-align: left;
+      padding: 10px;
+    }
+
+    tbody {
+      /*padding: 20px;*/
+      border-width: 5px;
+
+      /*border-color: #fff;*/
+    }
+
+  </style>
+</head>
+
+
 <body>
 <form id="form1" name="form1" method="post" action="/medicine_reg_code">
   <div align="center">
-    <table width="200" border="1">
+    <table class="hospital-contents" border="1">
       <tr>
         <td>Medicine</td>
         <td><label>
@@ -17,13 +68,13 @@
         </label></td>
       </tr>
       <tr>
-        <td>Manufacture Date </td>
+        <td>Manufacture Date</td>
         <td><label>
           <input type="date" name="textfield3" required />
         </label></td>
       </tr>
       <tr>
-        <td> Expiry Date </td>
+        <td>Expiry Date</td>
         <td><label>
           <input type="date" name="textfield4" required />
         </label></td>
@@ -37,7 +88,7 @@
       </table>
     <p>
       <label>
-      <input type="submit" name="Submit" value="Register" />
+      <input type="submit" name="Submit" value="Register"/>
       </label>
     </p>
   </div>

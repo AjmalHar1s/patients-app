@@ -282,7 +282,9 @@ def edit_doctor():
 #doctor_management
 @app.route ('/doctor_details')
 def doctor_details():
-    cmd.execute("SELECT `doctor`.*,`department`.`doctor_department` FROM `department` JOIN `doctor` ON `doctor`.`department_id`=`department`.`department_id`")
+    cmd.execute(
+        "SELECT doctor.*, department.doctor_department FROM doctor JOIN department ON doctor.department_id = department.department_id WHERE hospital_id is NOT NULL")
+    # cmd.execute("SELECT `doctor`.*,`department`.`doctor_department` FROM `department` JOIN `doctor` ON `doctor`.`department_id`=`department`.`department_id`")
     s = cmd.fetchall()
     return render_template('Admin/doctor_management/doctor_details.html', res=s)
     #return render_template('Admin/doctor_management/doctor_details.html')
@@ -306,7 +308,7 @@ def doctor_registration():
 #View and add patients
 @app.route ('/patient_details')
 def patient_details():
-    cmd.execute("SELECT first_name, place FROM patient")
+    cmd.execute("SELECT * FROM `patient`")
     s = cmd.fetchall()
     return render_template('Hospital/patient_details.html', val = s)
 
@@ -333,7 +335,7 @@ def patient_details():
 #View booking details of patient
 @app.route ('/patient_booking_details')
 def patient_booking_details():
-    cmd.execute("SELECT patient.first_name, patient.last_name, doctor.doctor_name, booking.date,payment.amount,payment.status FROM booking JOIN patient ON booking.patient_id=patient.login_id JOIN doctor ON doctor.login_id = booking.doctor_id JOIN payment ON booking.booking_id=payment.booking_id")
+    cmd.execute("SELECT patient.`first_name`,`last_name`,`doctor`.`doctor_name`,`booking`.* FROM `patient` JOIN `booking` ON `booking`.`patient_id`=`patient`.`login_id` JOIN `doctor` ON `doctor`.`login_id`=`booking`.`doctor_id`")
     s = cmd.fetchall()
     return render_template('Hospital/patient_booking_details.html', val=s)
 
@@ -374,7 +376,7 @@ def medicine_reg_code():
     return '''<script>alert('registration success');window.location='/add_and_manage_medicine'</script>'''
 
 
-#for editing the registered medicine details
+#for editing the registered medicedit_medicine_detailsine details
 @app.route('/edit_medicine_details', methods=['get'])
 def edit_medicine_details():
     mid = request.args.get('id')

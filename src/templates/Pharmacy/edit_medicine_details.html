@@ -8,19 +8,19 @@
       <tr>
         <td>Medicine Name </td>
         <td><label>
-          <input type="text" name="textfield" required pattern="[A-Z a-z.]{3,25}" />
+          <input type="text" name="textfield" value="{{v[2]}}" required pattern="[A-Z a-z.]{3,25}" />
         </label></td>
       </tr>
       <tr>
         <td>Medicine Brand </td>
         <td><label>
-          <input type="text" name="textfield2" pattern="[A-Z a-z.]{3,25}" />
+          <input type="text" name="textfield2" value="{{v[3]}}" pattern="[A-Z a-z.]{3,25}" />
         </label></td>
       </tr>
       <tr>
         <td>Manufacture Date </td>
         <td><label>
-          <input type="date" name="textfield3" required />
+          <input type="date" name="textfield3" value="{{v[4]}}" required />
         </label></td>
       </tr>
       <tr>
@@ -32,7 +32,7 @@
       <tr>
         <td>Quantity</td>
         <td><label>
-          <input type="text" name="textfield5" pattern="{0,25}" />
+          <input type="text" name="textfield5" value="{{v[6]}}" pattern="{0,25}" />
         </label></td>
       </tr>
       </table>
