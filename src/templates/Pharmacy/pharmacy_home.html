@@ -1,13 +1,50 @@
 {%extends 'index_pharmacy.html'%}
 {%block body%}
+
+<head>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    .hospital-contents {
+      font-family: 'Poppins', sans-serif;
+      margin: 0 auto;
+      align-items: center;
+      font-size: 30px;
+    }
+    table {
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+      padding: 40px 30px;
+      width: 80%;
+      padding: 40px 30px;
+      color: #0c4128;
+
+    }
+    table tr {
+      padding: 40px;
+    }
+
+    tbody {
+      border-width: 20px;
+      border-color: #fff;
+    }
+    tbody td:hover {
+      color: red;
+    }
+  </style>
+</head>
+
 <body>
 <form id="form1" name="form1" method="post" action="">
-  <table width="200" border="1">
+  <table class="hospital-contents">
     <tr>
-      <td><a href="/add_and_manage_medicine">Add medicine / manage medicine</a></td>
+      <td><a href="/add_and_manage_medicine">Add Medicine / Manage Medicine</a></td>
     </tr>
+    <br>
     <tr>
-      <td><a href="/medicine_prescription">View prescription</a></td>
+      <td><a href="/medicine_prescription">View Prescription</a></td>
     </tr>
   </table>
 </form>

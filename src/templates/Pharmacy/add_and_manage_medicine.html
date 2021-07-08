@@ -68,16 +68,7 @@
       border: 1px solid #0a53be;
       transition: 0.7s;
     }
-    /*tbody td:hover {*/
-    /*  color: red;*/
-    /*}*/
-    .top-desc{
-      font-size: 30px;
-      font-weight: bold;
-      color: #000000;
-      text-decoration: underline;
-      padding-bottom: 10px;
-    }
+
     .container-div p {
         text-align: center;
     }
@@ -87,7 +78,7 @@
 <body>
 <div align="center">
 <form id="form1" name="form1" method="post" action="">
-  <table width="200" border="1">
+  <table class="hospital-contents" border="1">
     <tr>
       <th>Medicine Name </th>
       <th>Brand  </th>
@@ -110,7 +101,7 @@
   <form id="form2" name="form2" method="post" action="/medicine_registration">
   <p>
     <label>
-    <input type="submit" name="Submit" value="ADD" />
+    <input type="submit" name="Submit" value="ADD" class="button" />
     </label>
   </p>
   </form>
