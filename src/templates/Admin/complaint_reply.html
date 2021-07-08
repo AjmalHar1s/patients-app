@@ -13,7 +13,7 @@
       font-family: 'Poppins', sans-serif;
       margin: 0 auto;
       align-items: center;
-      font-size: 20px;
+      font-size: 23px;
       /*text-align: center;*/
     }
     table {
@@ -25,10 +25,13 @@
       width: 50%;
       /*padding: 40px 10px;*/
       color: #0c4128;
+
     }
-    .table-head {
-      font-weight: bold;
-      font-size: 25px;
+    table th {
+      text-align: center;
+      padding: 10px 3px;
+      border-width: 5px;
+      font-size: 20px;
     }
     table tr {
       /*padding: 40px;*/
@@ -36,8 +39,7 @@
     }
     table td {
       border-width: 5px;
-      text-align: left;
-      padding: 10px;
+      text-align: center;
     }
 
     tbody {
@@ -46,15 +48,44 @@
 
       /*border-color: #fff;*/
     }
+    textarea {
+      height: 200px;
+      width: 600px;
+    }
 
+    .button {
+      /*padding: 10px;*/
+      background: #1c84e3;
+      border: 0;
+      padding: 10px 30px;
+      color: #fff;
+      transition: 0.4s;
+      border-radius: 3px;
+      margin: 20px 5px;
+    }
+    .button:hover {
+      background: #bad9e7;
+      color: #0a53be;
+      border: 1px solid #0a53be;
+      transition: 0.7s;
+    }
+    /*tbody td:hover {*/
+    /*  color: red;*/
+    /*}*/
+    .top-desc{
+      font-size: 30px;
+      font-weight: bold;
+      color: #000000;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 <form id="form1" name="form1" method="post" action="send_complaint_reply">
   <div align="center">
-    <table width="200" border="1">
+    <table class="hospital-contents" border="1">
       <tr>
-        <td><div align="center">Complaint reply </div></td>
+        <th><div align="center">Complaint Reply</div></th>
       </tr>
       <tr>
         <td><label>
@@ -66,7 +97,7 @@
       <tr>
         <td><label>
           <div align="center">
-            <input type="submit" name="Submit" value="SEND" />
+            <input type="submit" name="Submit" value="SEND" class="button" />
             </div>
         </label></td>
       </tr>
